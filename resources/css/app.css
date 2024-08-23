@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* a{
+    justify-content: center;
+    text-align: center;
+
+} */
+
+td{
+    border: 1px rgb(61, 61, 61) solid;
+}
+th{
+    border: 2px rgb(61, 61, 61) solid;
+
+}
+
