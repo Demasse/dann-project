@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cours;
+use App\Models\Competence;
+use App\Models\Cour;
 use App\Models\module;
 use Illuminate\Http\Request;
 
@@ -13,13 +14,13 @@ class CoursController extends Controller
      */
     public function index()
     {
-        $cours=Cours::with('modules', 'modules.competence')->orderBy('created_at', 'desc')->paginate(20);
+        $cours=Cour::with('modules', 'modules.competence')->orderBy('created_at', 'desc')->paginate(20);
         // foreach ($cours as $cour) {
-        //     foreach ($cour->modules as $module) {
-        //     dd($module->nom_module);
-        // }
-        // }
-        // dd($cours);
+            //     foreach ($cour->modules as $module) {
+                //     dd($module->nom_module);
+                // }
+                // }
+                // dd($cours);
         return view('cours.index',compact('cours'));
 
     }
@@ -38,59 +39,66 @@ class CoursController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nom'=> 'required',
-            'module_id'=> 'required',
+        // Validation des données du formulaire
+        $validated = $request->validate([
+            'nom' => 'required|string|max:255', // Le nom du module
+            'description' => 'required|string|max:255', // La compétence associée
+            // 'cour_id' => 'required|exists:cours,id', // Le cours sélectionné
+        ]);
+        $cours = Cour::create([
+            'nom' => $validated['nom'], // Le nom du module
+            'description' => $validated['description'],
         ]);
 
-      cours::create($request->all());
+    
 
-      return redirect()->route('cours.index')->with('success','les cours a ete cree avec success');
-
+        // Redirection avec message de succès
+        return redirect()->route('cours.index')->with('success', 'Cours creer avec success !');
     }
-
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        $module = Module::findOrFail($id);
-      $competences= $module->competences;
-
-      return response()->json([
-        'module' => $module,
-        'competences' => $competences
-      ]);
+        // $module = Module::findOrFail($id);
+    //   $competences= $module->competences;
+      $cour=cour::find($id);
+      $modules=Module::all();
+      return view('cours.show',compact('cour','modules'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cours $cours)
+    public function edit(Cour $cour)
     {
+
         $modules=Module::all(); //recupere les module assoisie au cours
-        return view('cours.edit',compact('cours','modules'));
+        return view('cours.edit',compact('cour','modules'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cours $cours)
+    public function update(Request $request, Cour $cour)
     {
         // 1. Valider les données entrées par l'utilisateur
+        $request->validate([
+            'nom'=> 'required',
+            'description'=> 'required',
 
-      $request->validate([
-        'nom'=> 'required',
-        'moduleçid'=> 'required',
+            // 'module_id'=> 'required',
 
-      ]);
-
-// 2. Mettre à jour les champs du modèle avec les nouvelles données
-        $cours->update([
-            'nom' => $request->input('nom'),
-            'module_id' => $request->input('module_id'),
         ]);
+
+        // 2. Mettre à jour les champs du modèle avec les nouvelles données
+        $cour->update([
+            'nom' => $request->input('nom'),
+            'description' => $request->input('description'),
+
+        ]);
+        // dd($request);
 
 
         // 3. Rediriger l'utilisateur vers la liste des cours, en affichant un message de succès
@@ -101,12 +109,12 @@ class CoursController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cours $cour)
+    public function destroy(Cour $cour)
     {
         try {
             $cour->delete();
             return redirect()->route('cours.index')->with('success', 'Le cours a été supprimé avec succès.');
-            
+
 
         } catch (\Exception $e) {
             // Gestion de l'erreur

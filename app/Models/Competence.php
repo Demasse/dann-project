@@ -14,6 +14,9 @@ class Competence extends Model
     // protected $with=[
     //     'module'
     // ];
+
+    protected $fillable = ['titre','module_id'];
+
     public function module(){
 
 return $this->belongsTo(Module::class);

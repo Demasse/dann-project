@@ -8,7 +8,7 @@ use App\Models\Module;
 
 
 
-class Cours extends Model
+class Cour extends Model
 {
     use HasFactory;
 

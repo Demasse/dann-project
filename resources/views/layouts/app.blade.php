@@ -19,6 +19,9 @@
                 <li>
                     <a class="text-white hover:text-red-200 font-bold text-lg" href="{{ route('cours.create') }} ">Créer un cours</a>
                 </li>
+                <li>
+                    <a class="text-white hover:text-red-200 font-bold text-lg" href="{{ route('module.create') }} ">Créer un module</a>
+                </li>
                 <!-- Ajouter d'autres liens de navigation si nécessaire -->
             </ul>
         </nav>
@@ -49,7 +52,7 @@
                 <th>{{  $cour->nom  }}</th>
                 <th>{{  $cour->description   }}</th>
                 <th>
-                    <select name="" id=" module-list ">
+                    <select name="module" id=" module-list ">
                         @foreach ( $cour->modules as $module)
                         <option value="{{$module->id}}">{{$module->nom_module}}</option>
 
@@ -68,7 +71,7 @@
 
                     <a href="{{ route('cours.edit', $cour->id) }} "   class=" text-white mx-2  bg-[#5439c8] px-1 py-1 rounded-md ">Update</a>
                     <a href="{{ route('cours.delete', $cour->id) }} "   class=" text-white mx-2  bg-[#5439c8] px-1 py-1 rounded-md ">Delete</a>
-                    <a href="{{ route('cours.delete', $cour->id) }} "   class=" text-white mx-2  bg-[#5439c8] px-1 py-1 rounded-md ">voire</a>
+                    <a href="{{ route('cours.show', $cour->id) }} "   class=" text-white mx-2  bg-[#5439c8] px-1 py-1 rounded-md ">voire</a>
 
                     </td>
               </tr>

@@ -10,11 +10,14 @@ class Module extends Model
 {
     protected $with=['competence','cour'];
     use HasFactory;
-    protected $fillable = [] ;
+    protected $fillable = [
+        'nom_module',
+        'cour_id'
+        ] ;
 
    public function cour(){
 
-    return   $this->belongsTo(Cours::class);
+    return   $this->belongsTo(Cour::class, 'cour_id');
 
    }
 
