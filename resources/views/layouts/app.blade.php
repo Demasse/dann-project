@@ -8,17 +8,22 @@
 
     <!-- Inclure d'autres fichiers CSS ou bibliothèques si nécessaire -->
 </head>
-<body class="bg-gray-100 font-sans">
-    <header class="bg-blue-500 py-4 shadow-md">
-        <nav class="container mx-auto">
+<body class="bg-gray-100 font-sans w-[100%] h-[100vh] grid grid-cols-5 col-span-full">
+    <header class="bg-blue-500 py-4 flex flex-col shadow-md  col-span-1">
+        <nav class="container mx-auto ">
             <!-- Menu de navigation commun à toutes les pages -->
-            <ul class="flex justify-center space-x-4">
+            <ul class="flex justify-center space-x-4 flex-col h-[100%] ">
+
                 <li>
                     <a class="text-white hover:text-red-200 font-bold text-lg" href="{{ route('cours.index') }}">Accueil</a>
                 </li>
+
+            
+
                 <li>
                     <a class="text-white hover:text-red-200 font-bold text-lg" href="{{ route('cours.create') }} ">Créer un cours</a>
                 </li>
+
                 <li>
                     <a class="text-white hover:text-red-200 font-bold text-lg" href="{{ route('module.create') }} ">Créer un module</a>
                 </li>
@@ -27,14 +32,18 @@
         </nav>
     </header>
 
+    <div class="col-span-4"></div>
 
 
-    <div class="container mx-auto mt-8">
+    {{-- <div class="container mx-auto mt-8">
         <!-- Contenu spécifique à chaque page -->
         @yield('content')
-    </div>
+    </div> --}}
 
-    <table class="w-[50rem] h-[10rem] border-blue-500 border-4 mx-auto">
+    {{-- {{  $cour->competences_id	}} --}}
+
+
+    {{-- <table class="w-[50rem] h-[10rem] border-blue-500 border-4 mx-auto">
 
         <thead>
           <tr>
@@ -61,9 +70,8 @@
                     </select>
                 </th>
                 <th id="competences-container" >
-                    {{-- {{  $cour->competences_id	}} --}}
                         @foreach ( $cour->modules as $module)
-<option value="{{$module->id}}">{{$module->competence?->titre}}</option>
+           <option value="{{$module->id}}">{{$module->competence?->titre}}</option>
                         @endforeach
                 </th>
 
@@ -77,6 +85,8 @@
               </tr>
               @endforeach
         </tbody>
-    </table>
+    </table> --}}
+
+
 </body>
 </html>

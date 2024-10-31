@@ -4,6 +4,9 @@
 
 @section('content')
 
+<div class="col-span-4">
+
+
 <div class="container">
 
 
@@ -41,5 +44,6 @@
     </form>
 
 
+</div>
 </div>
 @endsection

@@ -1,7 +1,19 @@
 @extends('layouts.admin')
 
-@section('content')
-    <form action="{{ route('module.store') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+@section('title','Creer un module')
+  @section('content')
+
+<div class="col-span-4">
+
+
+
+<h1 class="text-2xl font-bold mb-4">Créer un module</h1>
+
+
+  {{-- <h1 class="text-2xl font-bold mb-4">Créer un module</h1> --}}
+
+
+    <form action="{{ route('module.store') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 col-span-3">
 
         @csrf
 
@@ -27,7 +39,7 @@
                 @endforeach
             </select>
         </div>
-        <br>
+        <br> 
 
         <div class="flex items-center justify-between">
             <button
@@ -39,4 +51,6 @@
 
 
     </form>
+
+</div>
 @endsection

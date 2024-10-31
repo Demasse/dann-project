@@ -3,7 +3,12 @@
 
 @section('title','Creer un cours')
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Créer un nouveau cours</h1>
+<div class="col-span-4">
+
+<h1 class="text-2xl font-bold mb-4">Créer un nouveau cncghfcgcours</h1>
+
+
+
 
 <form action="{{ route('cours.store') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     @csrf
@@ -24,5 +29,6 @@
     </div>
 </form>
 
+</div>
 
 @endsection

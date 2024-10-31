@@ -9,11 +9,21 @@ use Illuminate\Http\Request;
 
 class CoursController extends Controller
 {
+
+    public function contact(){
+
+        return view("begin.contact");
+
+    }
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+
+
         $cours=Cour::with('modules', 'modules.competence')->orderBy('created_at', 'desc')->paginate(20);
         // foreach ($cours as $cour) {
             //     foreach ($cour->modules as $module) {
@@ -50,7 +60,7 @@ class CoursController extends Controller
             'description' => $validated['description'],
         ]);
 
-    
+
 
         // Redirection avec message de succès
         return redirect()->route('cours.index')->with('success', 'Cours creer avec success !');
@@ -70,13 +80,31 @@ class CoursController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     */
-    public function edit(Cour $cour)
-    {
 
-        $modules=Module::all(); //recupere les module assoisie au cours
-        return view('cours.edit',compact('cour','modules'));
-    }
+     */
+
+     public function edit(Cour $cour )
+{
+    // Récupérer tous les modules
+    $modules = Module::all();
+
+    // Récupérer toutes les compétences
+    $competences = Competence::all();
+
+    // Pas besoin de rechercher à nouveau le cours, car il est déjà passé en paramètre
+    return view('cours.edit', compact('cour', 'modules', 'competences'));
+}
+
+     // public function edit(Cour $cour , $id)
+    // {
+    //     $cour = Cour::with(['modules', 'competences'])->find(  $id );
+    //     $modules = Module::all(); // Récupérer tous les modules et recupere les module assoisie au cours
+    //     $competences = Competence::all(); // Récupérer toutes les compétences
+
+
+    //     $modules=Module::all(); //recupere les module assoisie au cours
+    //     return view('cours.edit',compact('cour','modules', 'competences'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -85,22 +113,27 @@ class CoursController extends Controller
     {
         // 1. Valider les données entrées par l'utilisateur
         $request->validate([
-            'nom'=> 'required',
-            'description'=> 'required',
-
-            // 'module_id'=> 'required',
-
+            'nom' => 'required',
+            'description' => 'required',
+            'module_id' => 'required|array', // Assurez-vous que c'est un tableau
+            'module_id.*' => 'exists:modules,id', // Vérifiez que chaque module existe
         ]);
 
         // 2. Mettre à jour les champs du modèle avec les nouvelles données
         $cour->update([
             'nom' => $request->input('nom'),
             'description' => $request->input('description'),
-
         ]);
-        // dd($request);
-
-
+        foreach ($request->input('module_id') as $moduleId) {
+            // Trouver le module et l'associer au cours
+            $module = Module::find($moduleId);
+            // dump($module);
+            if ($module) {
+                $module->cour_id = $cour->id; // Assurez-vous que la relation est définie
+                $module->save(); // Sauvegarder le module
+            }
+        }
+        // die;
         // 3. Rediriger l'utilisateur vers la liste des cours, en affichant un message de succès
         return redirect()->route('cours.index')->with('success', 'Cours mis à jour avec succès');
 

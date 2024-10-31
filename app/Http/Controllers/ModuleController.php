@@ -52,4 +52,54 @@ class ModuleController extends Controller
         // Redirection avec message de succès
         return redirect()->route('cours.index')->with('success', 'Module creer avec succès !');
     }
+
+
+    public function edit($id)
+    {
+        // Récupérer le module spécifique
+        $module = Module::findOrFail($id);
+
+        // Récupérer les compétences associées au module
+        $competences = Competence::where('module_id', $module->id)->get();
+
+        // Récupérer tous les cours pour pouvoir les afficher
+        $cours = Cour::all();
+
+        return view('modules.edit', compact('module', 'competences', 'cours'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        // Validation des données du formulaire
+        $validated = $request->validate([
+            'nom_module' => 'required|string|max:255',
+            'cour_id' => 'required|exists:cours,id',
+        ]);
+
+        // Récupération du module à mettre à jour
+        $module = Module::findOrFail($id);
+
+        // Mise à jour des informations du module
+        $module->nom_module = $validated['nom_module'];
+        $module->cour_id = $validated['cour_id'];
+
+        // Sauvegarde des modifications
+        $module->save();
+
+        // Redirection vers la liste des modules avec un message de succès
+        return redirect()->route('cours.index')->with('success', 'Cours mis à jour avec succès');
+
+    }
+
+
+    public function index(){
+
+
+        return view("begin.acc");
+
+    }
+
+
+
 }
