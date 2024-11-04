@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CoursController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\ProgController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +75,7 @@ Route::post('/register',[RegisterController::class, 'register']);
 Route::get('/cours',[HomeController::class, 'cours'])->name('cours.index');
 
 Route::get('/home', [HomeController::class, 'emploi'])->name('home.emploi');
+Route::get('/programme-cours', [ProgController::class, 'program'])->name('home.program');
 Route::get('/cour', [HomeController::class, 'liste'])->name('cours.liste');
 Route::get('/begin', [HomeController::class, 'acceuil'])->name('begin.acceuil');
 

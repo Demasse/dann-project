@@ -1,88 +1,39 @@
-{{--
-
-
 @extends('layouts.admin')
-
-@section('title','Creer un cours')
 @section('content')
 
 <div class="col-span-4">
+    <h1 class=" text-2xl text-center   px-4 py-2 font-bold text-white bg-gradient-to-r from-blue-500 to-green-500 rounded-md hover:opacity-80 transition-opacity duration-300">Emploi de temps</h1>
 
-     <table class="w-[50rem] h-[10rem] border-blue-500 border-4 mx-auto">
+ <br>
+ <br>
 
-        <thead>
-          <tr>
-            <th>Cours</th>
-            <th>Description</th>
-            <th>Module</th>
-            <th>Competence</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($cours as $cour )
 
-            <tr>
-                <th>{{  $cour->nom  }}</th>
-                <th>{{  $cour->description   }}</th>
-                <th>
-                    <select name="module" id=" module-list ">
-                        @foreach ( $cour->modules as $module)
-                        <option value="{{$module->id}}">{{$module->nom_module}}</option>
+            <table class="min-w-full bg-white rounded-lg shadow-lg">
+                <thead>
+                    <tr class="bg-blue-600 text-white">
+                        <th class="py-2 px-4 text-left">Matière</th>
+                        <th class="py-2 px-4 text-left">jours</th>
+                        <th class="py-2 px-4 text-left">heure de debut</th>
+                        <th class="py-2 px-4 text-left">heure de fin</th>
+                        <th class="py-2 px-4 text-left">Enseignant</th>
 
-                        <a href="#" data-module-id="{{ $module->id }}">{{ $module->name }}</a>
-                        @endforeach
-                    </select>
-                </th>
-                <th id="competences-container" >
-                        @foreach ( $cour->modules as $module)
-             <option value="{{$module->id}}">{{$module->competence?->titre}}</option>
-                        @endforeach
-                </th>
+                    </tr>
+                </thead>
 
-                <td  class=" gap-5">
+                <tbody>
+                   @foreach ($cours as $cour )
 
-                    <a href="{{ route('cours.edit', $cour->id) }} "   class=" text-white mx-2  bg-[#5439c8] px-1 py-1 rounded-md ">Update</a>
-                    <a href="{{ route('cours.delete', $cour->id) }} "   class=" text-white mx-2  bg-[#5439c8] px-1 py-1 rounded-md ">Delete</a>
-                    <a href="{{ route('cours.show', $cour->id) }} "   class=" text-white mx-2  bg-[#5439c8] px-1 py-1 rounded-md ">voire</a>
+                   <tr>
+                       <td class="py-2 px-4" {{$cour->id}} >{{$cour->nom}}</td>
 
-                </td>
-                
-            </tr>
-              @endforeach
-        </tbody>
-    </table>
+                    </tr>
+                    @endforeach
+                </tbody>
+
+
+            </table>
+
 
 
 </div>
 @endsection
-
- --}}
-
-
-
-
-
- <div class="col-span-4">
-
-    <table class="w-[50rem] h-[10rem] border-blue-500 border-4 mx-auto">
-
-       <thead>
-         <tr>
-           <th>Cours</th>
-           <th>Description</th>
-
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach ($cours as $cour )
-
-        <tr>
-            <th>{{  $cour->nom  }}</th>
-            <th>{{  $cour->description   }}</th>
-
-    </tr>
-      @endforeach
-</tbody>
-</table>
