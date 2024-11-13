@@ -50,9 +50,13 @@
         <input type="text" name="teacher_name" id="teacher_name" class="border rounded py-2 px-3 w-full" required>
     </div>
 
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        create
-    </button>
+    <div class="flex items-center justify-between">
+        <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit">
+            Create
+        </button>
+    </div>
 </form>
 
 </div>

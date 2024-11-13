@@ -70,7 +70,7 @@
 
 
                     </div>
-                    <a class="text-white hover:text-red-200 font-bold text-lg" href="{{ route('home.program') }} ">programme un cours</a>
+                    <a class="text-white hover:text-red-200 font-bold text-lg" href="{{ route('prog.create') }} ">programme un cours</a>
                 </li>
 
                 <li class="flex items-center space-x-1 py-2">
@@ -113,12 +113,12 @@
 
                     </div>
 
-                    <a class="text-white hover:text-red-200 font-bold text-lg" href=" {{ route('home.emploi') }}  " >Emploi de temps </a>
+                    <a class="text-white hover:text-red-200 font-bold text-lg" href=" {{ route('prog.index') }}  " >Emploi de temps </a>
                 </li>
 
 
 
-            <li class="flex items-center space-x-1 py-2 mt-[18rem]">
+            <li class="flex items-center space-x-1 py-2 mt-[16rem]">
                 <div>
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

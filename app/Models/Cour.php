@@ -20,7 +20,7 @@ class Cour extends Model
 
    }
 
-   
+
 
 
    // Relation: Un cours appartient à un jour
@@ -34,6 +34,10 @@ class Cour extends Model
        return $this->belongsToMany(Heure::class);
    }
 
+   public function prog()
+{
+    return $this->hasMany(Prog::class);
+}
 
 
 }

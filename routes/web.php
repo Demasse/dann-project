@@ -74,10 +74,20 @@ Route::post('/register',[RegisterController::class, 'register']);
 // Route::get('/home',[HomeController::class, 'index'])->name('home');
 Route::get('/cours',[HomeController::class, 'cours'])->name('cours.index');
 
-Route::get('/home', [HomeController::class, 'emploi'])->name('home.emploi');
-Route::get('/programme-cours', [ProgController::class, 'program'])->name('home.program');
+// Route::get('/emploi de temps ', [HomeController::class, 'emploi'])->name('prog.index');
+
+Route::get('/emploi de temps', [HomeController::class, 'emploi'])->name('prog.index');
+
+// Route::get('/programme-cours', [ProgController::class, 'index'])->name('home.emploi');
+Route::get('/programme-cours', [ProgController::class, 'program'])->name('prog.create');
+// Route::get('/programme-cours', [ProgController::class, 'store'])->name('home.store');
+
 Route::get('/cour', [HomeController::class, 'liste'])->name('cours.liste');
 Route::get('/begin', [HomeController::class, 'acceuil'])->name('begin.acceuil');
+
+// Route::get('/courses', [ProgController::class, 'index'])->name('courses.index');
+// Route::get('/courses/create', [ProgController::class, 'create'])->name('courses.create');
+// Route::post('/courses', [ProgController::class, 'store'])->name('courses.store');
 
 Route::get('/utilisateurs', [UserController::class, 'user'])->name('user.index');
 Route::put('/user/{id}/role', [UserController::class, 'updaterole'])->name('user.updaterole');

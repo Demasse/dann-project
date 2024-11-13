@@ -45,7 +45,7 @@ class HomeController extends Controller
     public function emploi(){
 
 
-        return view('home.emploi');
+        return view('prog.index');
 
     }
     public function liste(){
