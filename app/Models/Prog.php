@@ -4,18 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Cour;
 class Prog extends Model
 {
     use HasFactory;
 
     // Indiquez les attributs pouvant être assignés en masse
     protected $fillable = [
-        'cours_id',
+        'cour_id',
         'jour',
         'heure_debut',
         'heure_fin',
         'nom'
+    ];
+
+    protected $with=[
+        'cour'
     ];
 
     // Définir la relation avec le modèle Course

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cour;
 use App\Models\Module;
+use App\Models\Prog;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -43,9 +44,8 @@ class HomeController extends Controller
     }
 
     public function emploi(){
-
-
-        return view('prog.index');
+        $progs = Prog::all();
+        return view("prog.index",compact('progs'));
 
     }
     public function liste(){

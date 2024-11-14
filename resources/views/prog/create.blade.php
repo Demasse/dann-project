@@ -9,23 +9,26 @@
 
 <br>
 
-<form action="   " method="POST">
+<form action="{{ route('prog.store') }}" method="POST">
     @csrf
 
     <div class="mb-4">
         <label for="subject" class="block font-bold mb-2">Matière</label>
-        <select name="subject_id" id="subject_id" class="border rounded py-2 px-3 w-full" required>
+        <select name="cour_id" id="subject_id" class="border rounded py-2 px-3 w-full" required>
 
         @foreach ($cours as $cour )
           <option value=" {{$cour->id  }} ">{{$cour->nom}}</option>
         @endforeach
 
     </select>
+    @error('subject_id')
+    {{$message}}
+            @enderror
     </div>
 
     <div class="mb-4">
         <label for="day" class="block font-bold mb-2">Jour</label>
-        <select name="day" id="day" class="border rounded py-2 px-3 w-full">
+        <select name="jour" id="day" class="border rounded py-2 px-3 w-full">
             <option value="">Sélectionnez un jour</option>
             <option value="Lundi">Lundi</option>
             <option value="Mardi">Mardi</option>
@@ -33,21 +36,33 @@
             <option value="Jeudi">Jeudi</option>
             <option value="Vendredi">Vendredi</option>
         </select>
+        @error('day')
+        {{$message}}
+                @enderror
     </div>
 
     <div class="mb-4">
         <label for="start_time" class="block font-bold mb-2">Heure de début</label>
-        <input type="time" name="start_time" id="start_time" class="border rounded py-2 px-3 w-full" required>
+        <input type="time" name="heure_debut" id="start_time" class="border rounded py-2 px-3 w-full" required>
+        @error('start_time')
+{{$message}}
+        @enderror
     </div>
 
     <div class="mb-4">
         <label for="end_time" class="block font-bold mb-2">Heure de fin</label>
-        <input type="time" name="end_time" id="end_time" class="border rounded py-2 px-3 w-full" required>
+        <input type="time" name="heure_fin" id="end_time" class="border rounded py-2 px-3 w-full" required>
+        @error('end_time')
+        {{$message}}
+                @enderror
     </div>
 
     <div class="mb-4">
         <label for="teacher_name" class="block font-bold mb-2">Nom de l'enseignant</label>
-        <input type="text" name="teacher_name" id="teacher_name" class="border rounded py-2 px-3 w-full" required>
+        <input type="text" name="nom" id="teacher_name" class="border rounded py-2 px-3 w-full" required>
+        @error('teacher_name')
+        {{$message}}
+                @enderror
     </div>
 
     <div class="flex items-center justify-between">

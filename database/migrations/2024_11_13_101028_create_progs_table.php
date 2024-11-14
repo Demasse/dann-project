@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prog', function (Blueprint $table) {
+        Schema::create('progs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cours_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cour_id')->constrained('cours')->onDelete('cascade');
             $table->enum('jour', ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'])->nullable(); // Jour de la semaine
             $table->time('heure_debut'); // Heure de début
             $table->time('heure_fin');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prog');
+        Schema::dropIfExists('progs');
     }
 };

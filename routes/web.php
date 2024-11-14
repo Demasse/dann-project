@@ -76,11 +76,14 @@ Route::get('/cours',[HomeController::class, 'cours'])->name('cours.index');
 
 // Route::get('/emploi de temps ', [HomeController::class, 'emploi'])->name('prog.index');
 
-Route::get('/emploi de temps', [HomeController::class, 'emploi'])->name('prog.index');
+//prog
 
-// Route::get('/programme-cours', [ProgController::class, 'index'])->name('home.emploi');
-Route::get('/programme-cours', [ProgController::class, 'program'])->name('prog.create');
+Route::get('/emploi de temps', [HomeController::class, 'emploi'])->name('prog.index');
+Route::post('/programme-cours', [ProgController::class, 'store'])->name('prog.store');
+Route::get('/programme-cours', [ProgController::class, 'create'])->name('prog.create');
+
 // Route::get('/programme-cours', [ProgController::class, 'store'])->name('home.store');
+
 
 Route::get('/cour', [HomeController::class, 'liste'])->name('cours.liste');
 Route::get('/begin', [HomeController::class, 'acceuil'])->name('begin.acceuil');
