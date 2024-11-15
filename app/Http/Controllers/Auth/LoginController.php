@@ -28,12 +28,36 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request): RedirectResponse{
+    public function login(Request $request): RedirectResponse
+{
+    // Validation des identifiants
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required', 'string'],
+    ]);
 
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required','string'],
-        ]);
+    // Tentative de connexion
+    if (Auth::attempt($credentials, (bool) $request->remember)) {
+        $request->session()->regenerate(); // Régénérer la session
+
+        return redirect()->route('cours.index')->withStatus("Connexion réussie");
+    }
+
+    // En cas d'échec
+    return back()->withErrors([
+        'email' => 'Identifiants erronés.',
+    ])->onlyInput('email');
+}
+
+
+
+
+    // public function login(Request $request): RedirectResponse{
+
+    //     $credentials = $request->validate([
+    //         'email' => ['required', 'email'],
+    //         'password' => ['required','string'],
+    //     ]);
 
 
        // dd($request);
@@ -46,10 +70,10 @@ class LoginController extends Controller
         //     return redirect()->route('cours.index')->withStatus("connexion reussie");
         // }
 
-        return back()->withErrors([
-            'email' => 'identifiant erronés',
-        ])->onlyInput('email');
-    }
+        // return back()->withErrors([
+        //     'email' => 'identifiant erronés',
+        // ])->onlyInput('email');
+    // }
 
     public function logout(Request $request): RedirectResponse
         {
