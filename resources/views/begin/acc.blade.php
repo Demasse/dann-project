@@ -17,7 +17,10 @@
         <!-- Image au début -->
         <div class="">
 
-            <img class="rounded-full h-16 -my-4 " src="4-Gestion-du-stress.jpg" alt="">
+            {{-- <img class="rounded-full h-16 -my-4 " src="  image.png " alt=""> --}}
+
+
+            <img class="rounded-full h-16 -my-4 " src="   4-Gestion-du-stress.jpg  " alt="">
 
         </div>
 
