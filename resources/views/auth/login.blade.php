@@ -14,7 +14,17 @@
             <label for="remember" class="ml-3 block text-sm leading-6">Reste connecté
             </label>
         </div>
+
+
+
     </div>
 
 
     </x-auth-layout>
+
+    <p class="text-center text-gray-700 -mt-8 -ml-10">
+        Si vous n'avez pas de compte,
+        <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-700 font-semibold underline">
+            inscrivez-vous
+        </a>
+    </p>

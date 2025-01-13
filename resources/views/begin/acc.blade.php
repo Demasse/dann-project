@@ -93,6 +93,7 @@
         <a class="text-white hover:text-red-200 font-semibold bg-purple-700 p-2 rounded-md " href=" {{ route('login')}} ">Admin</a>
         <a class="text-white hover:text-red-200   font-semibold  bg-purple-700 p-2 rounded-md " href=" {{ route('login')}} ">Professeur</a>
     </div>
+
     <script src="/resources/js/app.js"></script>
 </body>
 </html>
