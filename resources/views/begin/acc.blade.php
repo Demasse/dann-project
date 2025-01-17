@@ -90,8 +90,9 @@
     </div>
 
     <div class="auth text-2xl mx-11 ">
-        <a class="text-white hover:text-red-200 font-semibold bg-purple-700 p-2 rounded-md " href=" {{ route('login')}} ">Admin</a>
-        <a class="text-white hover:text-red-200   font-semibold  bg-purple-700 p-2 rounded-md " href=" {{ route('login')}} ">Professeur</a>
+        <a class="text-white hover:text-red-200 font-semibold bg-gradient-to-r from-blue-500 to-green-500 p-2 rounded-md transform transition-transform duration-300 hover:scale-105" href="{{ route('login') }}">Admin</a>
+        {{-- <a class="text-white hover:text-red-200 font-semibold bg-gradient-to-r from-blue-500 to-green-500 p-2 rounded-md" href="{{ route('login') }}">Admin</a> --}}
+        {{-- <a class="text-white hover:text-red-200   font-semibold  bg-purple-700 p-2 rounded-md " href=" {{ route('login')}} ">Professeur</a> --}}
     </div>
 
     <script src="/resources/js/app.js"></script>
