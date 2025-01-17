@@ -25,8 +25,8 @@
             <tbody>
 
                 @foreach ($etudiantcounts as $etudiantcount)
-                    <tr>
-                        <td class="py-2 px-4">{{ $etudiantcount->name }}</td>
+                    <tr class=" ">
+                        <td class="py-2 px-4 ">{{ $etudiantcount->name }}</td>
                         <td class="py-2 px-4">{{ $etudiantcount->email }}</td>
                         <td class="py-2 px-4">{{ $etudiantcount->role }}</td>
 
@@ -37,9 +37,15 @@
                 <a  class="text-white mx-2 bg-[#39c845] px-1 py-1 rounded-md">Voir</a> --}}
 
                             @if (Auth::user()->role === 'admin')
-                                <a href="{{ route('user.show', $etudiantcount) }}" class="text-whi:te mx-2 bg-[#39c845] px-1 py-1 rounded-md">Voir</a>
-                                <a href="{{ route('user.edit', $etudiantcount) }}" class="text-white mx-2 bg-[#2cabd2] px-1 py-1 rounded-md">Update</a>
-                                <a href="{{ route('user.delete', $etudiantcount) }}" class="text-white mx-2 bg-[#f33caf] px-1 py-1 rounded-md">Delete</a>
+                                <a href="{{ route('user.show', $etudiantcount) }}" class="text-white mx-2 bg-[#39c845] hover:bg-[#32a639] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105">
+                                    Voir
+                                </a>
+                                <a href="{{ route('user.edit', $etudiantcount) }}" class="text-white mx-2 bg-[#2cabd2] hover:bg-[#2298b5] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105">
+                                    Update
+                                </a>
+                                <a href="{{ route('user.delete', $etudiantcount) }}" class="text-white mx-2 bg-[#f33caf] hover:bg-[#d0287d] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105">
+                                    Delete
+                                </a>
                             @else
                                 <a href="{{ route('user.show', $etudiantcount) }}" class="text-white mx-2 bg-[#39c845] hover:bg-[#32a639] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105">
                                     Voir

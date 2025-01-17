@@ -57,12 +57,12 @@
                             <td class="gap-5">
                                 @if (Auth::user()->role === 'admin' )
 
-                                <a href="{{ route('cours.edit', $cour->id) }}" class="text-white mx-2 bg-[#2cabd2] px-1 py-1 rounded-md">Update</a>
-                                <a href="{{ route('cours.delete', $cour->id) }}" class="text-white mx-2 bg-[#f33caf] px-1 py-1 rounded-md">Delete</a>
-
-                                <a href="{{ route('cours.show', $cour->id) }}" class="text-white mx-2 bg-[#39c845] hover:bg-[#32a639] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105">
-                                    Voir
+                                <a href="{{ route('cours.show', $cour->id) }}"  class="text-white mx-2 bg-[#39c845] hover:bg-[#32a639] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105">Voir </a>
+                                <a href="{{ route('cours.edit', $cour->id) }}" class="text-white mx-2 bg-[#2cabd2] hover:bg-[#2298b5] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105"> Update </a>
+                                <a href="{{ route('cours.delete', $cour->id) }}"class="text-white mx-2 bg-[#f33caf] hover:bg-[#d0287d] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105">
+                                    Delete
                                 </a>
+
 
                                 {{-- <a href="{{ route('cours.show', $cour->id) }}" class="text-white mx-2 bg-[#39c845] px-1 py-1 rounded-md">Voir</a> --}}
 
