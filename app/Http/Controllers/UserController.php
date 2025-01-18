@@ -51,10 +51,17 @@ class UserController extends Controller
 
 
     public function edit($id){
-        $user = User::findOrFail($id); // Assurez-vous que l'utilisateur existe
+        $user = User::findOrFail($id);
+        dd($user) // Assurez-vous que l'utilisateur existe
         return view('user.edit', compact('user'));
 
     }
+
+    // public function edit($id){
+    //     $user = User::findOrFail($id); // Assurez-vous que l'utilisateur existe
+    //     dd($user); // Vérifiez que l'utilisateur est bien récupéré
+    //     return view('user.edit', compact('user'));
+    // }
 
     public function show(string $id){
 

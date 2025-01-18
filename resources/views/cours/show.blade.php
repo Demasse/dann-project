@@ -14,7 +14,7 @@
         @csrf
         <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2" for="nom">Nom du cours:</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nom" type="text" name="nom" value="{{ $cour->nom}}" required>
+            <input class="shadow  appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nom" type="text" name="nom" value="{{ $cour->nom}}" required>
         </div>
 
         <p>{{ $cour->nom}}</p>
