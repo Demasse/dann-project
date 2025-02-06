@@ -14,7 +14,7 @@
 
         <table class="min-w-full bg-white rounded-lg shadow-lg">
             <thead>
-                <tr class="bg-blue-600 text-white">
+                <tr class="bg-blue-600 text-white ">
                     <th class="py-2 px-4 text-left">Nom</th>
                     <th class="py-2 px-4 text-left">Email</th>
                     <th class="py-2 px-4 text-left">Role</th>

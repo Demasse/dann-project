@@ -86,11 +86,24 @@ class UserController extends Controller
 
       }
 
-      public function destroy(User $user){
+    //   public function destroy(User $user){
 
-       $user->delete();
-       return redirect()->route('user.index')->with('success','utilisateur supprime avec success');
+    //    $user->delete();
+    //    return redirect()->route('user.index')->with('success','utilisateur supprime avec success');
 
+    //   }
+
+      public function destroy(User $user)
+      {
+          try {
+              $user->delete();
+              return redirect()->route('user.index')->with('success', 'Le user a été supprimé avec succès.');
+
+
+          } catch (\Exception $e) {
+              // Gestion de l'erreur
+              return redirect()->route('user.index')->with('error', 'Une erreur est survenue lors de la suppression du users.');
+          }
       }
 
    }

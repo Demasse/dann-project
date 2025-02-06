@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Creer un cours')
+@section('title', 'emploi de temps ')
 @section('content')
     <div class="col-span-4">
         <div id="content" class="content">
@@ -29,11 +29,11 @@
                 <tbody>
                     @foreach ($progs as $prog)
                         <tr>
-                            <td>{{ $prog->cour['nom'] }}</td>
-                            <td>{{ $prog->jour }}</td>
-                            <td>{{ $prog->heure_debut }}</td>
-                            <td>{{ $prog->heure_fin }}</td>
-                            <td>{{ $prog->nom }}</td>
+                            <td class=" text-center text-2xl " >{{ $prog->cour['nom'] }}</td>
+                            <td  class=" text-center text-2xl "  >{{ $prog->jour }}</td>
+                            <td  class=" text-center text-2xl "  >{{ $prog->heure_debut }}</td>
+                            <td  class=" text-center text-2xl "  >{{ $prog->heure_fin }}</td>
+                            <td  class=" text-center text-2xl "  >{{ $prog->nom }}</td>
                         </tr>
                     @endforeach
                 </tbody>

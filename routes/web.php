@@ -98,7 +98,8 @@ Route::get('/professeurs', [UserController::class, 'prof'])->name('user.prof');
 Route::get('/etudiants', [UserController::class, 'etudiant'])->name('user.etudiant');
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
-Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.delete');
+// Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.delete');
+Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.delete');
 Route::get('/user/{id}/show', [UserController::class, 'show'])->name('user.show');
 
 

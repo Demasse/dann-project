@@ -54,9 +54,14 @@
                     Voir
                 </a>
                 <a href="{{ route('user.edit', $user) }}" class="text-white mx-2 bg-[#2cabd2] hover:bg-[#2298b5] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105"> Update  </a>
-                <a href="{{ route('user.delete', $user) }}" class="text-white mx-2 bg-[#f33caf] hover:bg-[#d0287d] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105">
+
+             <form action="{{ route('user.delete', $user) }}" method="POST" class="inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-white mx-2 bg-[#f33caf] hover:bg-[#d0287d] transition duration-300 ease-in-out px-4 py-2 rounded-md shadow-lg transform hover:scale-105">
                     Delete
-                </a>
+                </button>
+                </form>
 
             </td>
 
