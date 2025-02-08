@@ -72,23 +72,31 @@ class UserController extends Controller
         $user = User::findOrFail($id); // Récupère l'utilisateur
         return view('user.show', compact('user')); // Passe l'utilisateur à la vue
     }
+///// ancien update
+    //   public function update(Request $request, User $user){
+    //       $request->validate([
+    //        'name'=>'required',
+    //        'email' => 'required|email|unique:users,email,' . $user->id ,
+    //        'role'=>'required'
+    //       ]);
+    //       $user->update($request->all());
+    //       return redirect()->route('user.index')->with('success','utilisateur modifier avec success');
+    //   }
 
-      public function update(Request $request, User $user){
+    public function update(Request $request, User $user)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'role' => 'required|string|max:255',
+    ]);
 
+    // Mettre à jour l'utilisateur
+    $user->update($request->only(['name', 'email', 'role'])); // Utiliser only pour éviter de mettre à jour d'autres champs par inadvertance
 
-          $request->validate([
-           'name'=>'required',
-           'email' => 'required|email|unique:users,email,' . $user->id ,
-           'role'=>'required'
-          ]);
+    return redirect()->route('user.index')->with('success', 'Utilisateur modifié avec succès');
+}
 
-          $user->update($request->all());
-          return redirect()->route('user.index')->with('success','utilisateur modifier avec success');
-
-
-
-
-      }
 
     //   public function destroy(User $user){
 

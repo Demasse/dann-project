@@ -96,8 +96,17 @@ Route::get('/utilisateurs', [UserController::class, 'user'])->name('user.index')
 Route::put('/user/{id}/role', [UserController::class, 'updaterole'])->name('user.updaterole');
 Route::get('/professeurs', [UserController::class, 'prof'])->name('user.prof');
 Route::get('/etudiants', [UserController::class, 'etudiant'])->name('user.etudiant');
-Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
+
+// Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+// Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
+
+// Modifier la route pour utiliser PUT
+Route::put('/user/{id}/update', [UserController::class, 'edit'])->name('user.edit');
+
+// Ou utiliser PATCH si vous préférez
+Route::patch('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
+
+
 // Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.delete');
 Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.delete');
 Route::get('/user/{id}/show', [UserController::class, 'show'])->name('user.show');
