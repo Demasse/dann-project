@@ -8,14 +8,35 @@
 <br>
 <br>
 
-<form action=" {{ route('user.show', $user->id) }} " method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+
+<form action="{{ route('user.show', $user->id ) }}" method="POST">
     @csrf
+    {{-- @method('PUT') --}}
+
     <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="nom">Nom :</label>
-        <input class="shadow  appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nom" type="text"  name="nom" value="{{ $user->name }}" required>
+        <label class="block text-gray-700 font-bold mb-2" for="nom">Nom </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nom" type="text" name="nom" value="{{ $user->name }}" required>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="nom">Email </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nom" type="text" name="nom" value="{{ $user->email }}" required>
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="nom">Rôle </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nom" type="text" name="nom" value="{{ $user->role }}" required>
     </div>
 
+    {{-- <a href=" http://127.0.0.1:8000/utilisateurs " class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Retour</a> --}}
+
+
+    <a href="{{ auth()->user()->role === 'admin' ? 'http://127.0.0.1:8000/utilisateurs' : 'http://127.0.0.1:8000/etudiants' }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Retour</a>
+
+
+
+
 </form>
+
 
 </div>
 @endsection

@@ -63,10 +63,14 @@ class UserController extends Controller
     //     return view('user.edit', compact('user'));
     // }
 
-    public function show(string $id){
+    // public function show(string $id){
 
-        return view('user.show');
+    //     return view('user.show');
 
+    // }
+    public function show(string $id) {
+        $user = User::findOrFail($id); // Récupère l'utilisateur
+        return view('user.show', compact('user')); // Passe l'utilisateur à la vue
     }
 
       public function update(Request $request, User $user){
