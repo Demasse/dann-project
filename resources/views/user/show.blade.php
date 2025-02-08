@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Creer un cours')
+@section('title','Listes des utilisateurs')
 @section('content')
 <div class="col-span-4">
 
