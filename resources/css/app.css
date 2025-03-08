@@ -16,3 +16,29 @@ th{
 
 }
 
+/* @media print {
+    body  *:not(#my-section):not(#my-section *){
+        visibility: hidden ;
+    }
+    #my-section{
+        position: absolute;
+        top:0;
+        left: 0;
+    }
+
+} */
+
+
+.animate-marquee {
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+
+
+
+
