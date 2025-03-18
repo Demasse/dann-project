@@ -37,7 +37,7 @@ Route::post('/cours', [CoursController::class, 'store'])->name('cours.store');
 //Route::get("/", [CoursController::class,"index"])->name('index');
 Route::get("/", [ModuleController::class,"index"])->name('index');
 
-Route::get("/", [ModuleController::class,"index"])->name('index');
+// Route::get("/", [ModuleController::class,"index"])->name('index');
 
 // Route::get('/home',[HomeController::class, 'index' ])->name('home');
 
@@ -100,11 +100,15 @@ Route::get('/etudiants', [UserController::class, 'etudiant'])->name('user.etudia
 // Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
 // Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
 
-// Modifier la route pour utiliser PUT
-Route::put('/user/{id}/update', [UserController::class, 'edit'])->name('user.edit');
+////ICI MODIFIE
+// // Modifier la route pour utiliser PUT
+// Route::put('/user/{id}/update', [UserController::class, 'edit'])->name('user.edit');
 
-// Ou utiliser PATCH si vous préférez
-Route::patch('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
+// // Ou utiliser PATCH si vous préférez
+// Route::patch('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
+
+Route::get('user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::put('user/{id}/update', [UserController::class, 'update'])->name('user.update');
 
 
 // Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('user.delete');

@@ -34,7 +34,7 @@
             <!-- Liens au milieu -->
             <div class="gap-y-2">
                 {{-- <a class=" text-white hover:text-red-200 font-semibold bg-purple-700 p-2 rounded-md " href="">About</a> --}}
-                <a  class="text-red-500 hover:text-black hover:bg-white font-semibold bg-black p-4 rounded-md transition-colors duration-300"
+                <a class="text-red-500 hover:text-black hover:bg-white font-semibold bg-black p-4 rounded-md transition-colors duration-300"
                     href="">About</a>
                 <a class="text-red-500 hover:text-white hover:bg-black font-semibold bg-white p-4 rounded-md transition-colors duration-300"
                     href="">Contact</a>
@@ -71,11 +71,11 @@
     <div class=" mt-11  ">
 
         <h1 class="text-5xl uppercase mx-11 font-semibold text-red-600 ">
-            Bienvenue sur notre plateforme <br> de  gestion des emplois du temps !
+            Bienvenue sur notre plateforme <br> de gestion des emplois du temps !
         </h1>
 
         <br>
-        <br>
+
 
         <div class=" flex justify-between gap-x-4  mx-36">
 
@@ -95,21 +95,20 @@
 
 
         </div>
-        <div class="mx-32 gap-x-6 mt-2 justify-center text-lg">
 
-            <a class="text-white hover:text-black hover:bg-white font-semibold bg-red-700 p-4 rounded-md transition-colors duration-300"
-               href="{{ route('register') }}">Inscription</a>
-            <a class="text-red-500 hover:text-white hover:bg-black font-semibold bg-white p-4 rounded-md transition-colors duration-300"
-               href="{{ route('login') }}">Connexion</a>
+        <div class="mx-32 gap-x-6 justify-center text-lg">
+
+            <a class="text-white hover:text-black hover:bg-white font-semibold bg-red-700 p-4 rounded-md transition-colors duration-300" href="{{ route('register') }}">Inscription</a>
+            <a class="text-red-500 hover:text-white hover:bg-black font-semibold bg-white p-4 rounded-md transition-colors duration-300" href="{{ route('login') }}">Connexion</a>
 
         </div>
 
     </div>
 
     <div class="auth text-2xl mx-11 ">
-        {{-- <a class="text-white hover:text-red-200 font-semibold bg-gradient-to-r from-blue-500 to-green-500 p-2 rounded-md transform transition-transform duration-300 hover:scale-105" href="{{ route('login') }}">Admin</a> --}}
+        {{-- <a class="text-white hover:text-red-200 font-semibold bg-gradient-to-r from-blue-500 to-green-500 p-2 rounded-md transform transition-transform duration-300 hover:scale-105" href="{{ route('login') }}" >Admin</a> --}}
         {{-- <a class="text-white hover:text-red-200 font-semibold bg-gradient-to-r from-blue-500 to-green-500 p-2 rounded-md" href="{{ route('login') }}">Admin</a> --}}
-        {{-- <a class="text-white hover:text-red-200   font-semibold  bg-purple-700 p-2 rounded-md " href=" {{ route('login')}} ">Professeur</a> --}}
+        {{-- <a class="text-white hover:text-red-200   font-semibold  bg-purple-700 p-2 rounded-md " href=" {{ route('login')}} "  >Professeur</a> --}}
     </div>
 
 
