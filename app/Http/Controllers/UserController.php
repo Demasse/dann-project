@@ -3,11 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
+
+    public function create(){
+
+        return view('user.create');
+
+    }
+
+
+        // Validation des données
+
+        public function store(Request $request)
+        {
+            // Validation des données
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:8|confirmed', // 'confirmed' vérifie la confirmation
+                'role' => 'required|string|in:admin,enseignant,etudiant',
+            ]);
+
+            // Vérification de la validation
+            if ($validator->fails()) {
+                return redirect()->route('user.create')
+                                 ->withErrors($validator)
+                                 ->withInput();
+            }
+
+            // Création de l'utilisateur
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role,
+            ]);
+
+            // Redirection après succès
+            return redirect()->route('user.index')->with('success', 'Utilisateur créé avec succès !');
+        }
+      //
+
     public function user(){
         // $profcount = User::where('role','enseignant')->count();
         // $etudiantcount = User::where('role','etudiant')->count();

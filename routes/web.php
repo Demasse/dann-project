@@ -93,6 +93,8 @@ Route::get('/begin', [HomeController::class, 'acceuil'])->name('begin.acceuil');
 // Route::post('/courses', [ProgController::class, 'store'])->name('courses.store');
 
 Route::get('/utilisateurs', [UserController::class, 'user'])->name('user.index');
+Route::get('/user-create', [UserController::class, 'create'])->name('user.create');
+Route::post('/user-store', [UserController::class, 'store'])->name('user.store');
 Route::put('/user/{id}/role', [UserController::class, 'updaterole'])->name('user.updaterole');
 Route::get('/professeurs', [UserController::class, 'prof'])->name('user.prof');
 Route::get('/etudiants', [UserController::class, 'etudiant'])->name('user.etudiant');

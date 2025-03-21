@@ -1,78 +1,79 @@
-
 @extends('layouts.admin')
 
-@section('title','PROGRAMME UN COURS')
+@section('title', 'Programmer un cours')
+
 @section('content')
-<div class="col-span-4">
+<div class="col-span-4 min-h-screenbg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 p-6 flex items-center justify-center">
+    <div class="bg-gray-800 bg-opacity-80 backdrop-blur-md p-8 rounded-xl shadow-2xl w-full max-w-lg border border-cyan-500/50 transform  transition-transform duration-300">
+        <h1 class="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-cyan-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-pulse ">Programmer un cours</h1>
 
-    <h1 class="text-2xl text-center px-4 py-2 font-bold text-white bg-gradient-to-r from-red-500 to-black rounded-md hover:opacity-80 transition-opacity duration-300">Programmer un cours</h1>
-<br>
+        <!-- Message de succès (optionnel) -->
+        @if (session('success'))
+            <div class="mb-6 p-4 bg-green-500/90 text-white rounded-lg shadow-md">
+                {{ session('success') }}
+            </div>
+        @endif
 
-<form action="{{ route('prog.store') }}" method="POST">
-    @csrf
+        <form action="{{ route('prog.store') }}" method="POST">
+            @csrf
 
-    <div class="mb-4">
-        <label for="subject" class="block font-bold mb-2">Matière</label>
-        <select name="cour_id" id="subject_id" class="border rounded py-2 px-3 w-full" required>
-
-        @foreach ($cours as $cour )
-          <option value=" {{$cour->id  }} ">{{$cour->nom}}</option>
-        @endforeach
-
-    </select>
-    @error('subject_id')
-    {{$message}}
-            @enderror
-    </div>
-
-    <div class="mb-4">
-        <label for="day" class="block font-bold mb-2">Jour</label>
-        <select name="jour" id="day" class="border rounded py-2 px-3 w-full">
-            <option value="">Sélectionnez un jour</option>
-            <option value="Lundi">Lundi</option>
-            <option value="Mardi">Mardi</option>
-            <option value="Mercredi">Mercredi</option>
-            <option value="Jeudi">Jeudi</option>
-            <option value="Vendredi">Vendredi</option>
-        </select>
-        @error('day')
-        {{$message}}
+            <div class="mb-6">
+                <label for="subject" class="block text-cyan-300 font-semibold mb-2">Matière</label>
+                <select name="cour_id" id="subject_id" class="w-full p-3 bg-gray-700 border border-cyan-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-200" required>
+                    @foreach ($cours as $cour)
+                        <option value="{{ $cour->id }}" class="bg-gray-800">{{ $cour->nom }}</option>
+                    @endforeach
+                </select>
+                @error('cour_id')
+                    <div class="text-pink-500 mt-1">{{ $message }}</div>
                 @enderror
-    </div>
+            </div>
 
-    <div class="mb-4">
-        <label for="start_time" class="block font-bold mb-2">Heure de début</label>
-        <input type="time" name="heure_debut" id="start_time" class="border rounded py-2 px-3 w-full" required>
-        @error('start_time')
-{{$message}}
-        @enderror
-    </div>
-
-    <div class="mb-4">
-        <label for="end_time" class="block font-bold mb-2">Heure de fin</label>
-        <input type="time" name="heure_fin" id="end_time" class="border rounded py-2 px-3 w-full" required>
-        @error('end_time')
-        {{$message}}
+            <div class="mb-6">
+                <label for="day" class="block text-cyan-300 font-semibold mb-2">Jour</label>
+                <select name="jour" id="day" class="w-full p-3 bg-gray-700 border border-cyan-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-200" required>
+                    <option value="" class="bg-gray-800">Sélectionnez un jour</option>
+                    <option value="Lundi" class="bg-gray-800">Lundi</option>
+                    <option value="Mardi" class="bg-gray-800">Mardi</option>
+                    <option value="Mercredi" class="bg-gray-800">Mercredi</option>
+                    <option value="Jeudi" class="bg-gray-800">Jeudi</option>
+                    <option value="Vendredi" class="bg-gray-800">Vendredi</option>
+                </select>
+                @error('jour')
+                    <div class="text-pink-500 mt-1">{{ $message }}</div>
                 @enderror
-    </div>
+            </div>
 
-    <div class="mb-4">
-        <label for="teacher_name" class="block font-bold mb-2">Nom de l'enseignant</label>
-        <input type="text" name="nom" id="teacher_name" class="border rounded py-2 px-3 w-full" required>
-        @error('teacher_name')
-        {{$message}}
+            <div class="mb-6">
+                <label for="start_time" class="block text-cyan-300 font-semibold mb-2">Heure de début</label>
+                <input type="time" name="heure_debut" id="start_time" class="w-full p-3 bg-gray-700 border border-cyan-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-200" required>
+                @error('heure_debut')
+                    <div class="text-pink-500 mt-1">{{ $message }}</div>
                 @enderror
-    </div>
+            </div>
 
-    <div class="flex items-center justify-between">
-        <button
-            class="text-red-500 hover:text-white font-semibold bg-black py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit">
-            Create
-        </button>
-    </div>
-</form>
+            <div class="mb-6">
+                <label for="end_time" class="block text-cyan-300 font-semibold mb-2">Heure de fin</label>
+                <input type="time" name="heure_fin" id="end_time" class="w-full p-3 bg-gray-700 border border-cyan-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-200" required>
+                @error('heure_fin')
+                    <div class="text-pink-500 mt-1">{{ $message }}</div>
+                @enderror
+            </div>
 
+            <div class="mb-6">
+                <label for="teacher_name" class="block text-cyan-300 font-semibold mb-2">Nom de l'enseignant</label>
+                <input type="text" name="nom" id="teacher_name" class="w-full p-3 bg-gray-700 border border-cyan-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-200" required placeholder="Entrez le nom">
+                @error('nom')
+                    <div class="text-pink-500 mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="flex justify-center">
+                <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold py-3 px-6 rounded-lg hover:from-cyan-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-cyan-500/50">
+                    Créer le cours
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
-
 @endsection
