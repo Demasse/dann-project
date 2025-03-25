@@ -15,7 +15,7 @@
         <!-- Logo -->
         <div>
             <img
-                class="rounded-full h-20 ""
+                class="rounded-full h-20 "
                 src="CFPCanadienne_Tee-shirt[1].png"
                 alt="Logo"
             >
@@ -39,7 +39,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto mt-16 px-6">
+    <main class="container mx-auto mt-4 px-6">
         <h1
             class="text-5xl md:text-6xl uppercase font-extrabold text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(167,139,250,0.7)]"
         >

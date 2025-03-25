@@ -78,7 +78,8 @@ Route::get('/cours',[HomeController::class, 'cours'])->name('cours.index');
 
 //prog
 
-Route::get('/emploi de temps', [HomeController::class, 'emploi'])->name('prog.index');
+// Route::get('/emploi de temps', [HomeController::class, 'emploi'])->name('prog.index');
+Route::get('/prog', [ProgController::class, 'index'])->name('prog.index');
 Route::post('/programme-cours', [ProgController::class, 'store'])->name('prog.store');
 Route::get('/programme-cours', [ProgController::class, 'create'])->name('prog.create');
 

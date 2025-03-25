@@ -3,9 +3,9 @@
 @section('title', 'Programmer un cours')
 
 @section('content')
-<div class="col-span-4 min-h-screenbg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 p-6 flex items-center justify-center">
-    <div class="bg-gray-800 bg-opacity-80 backdrop-blur-md p-8 rounded-xl shadow-2xl w-full max-w-lg border border-cyan-500/50 transform  transition-transform duration-300">
-        <h1 class="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-cyan-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-pulse ">Programmer un cours</h1>
+<div class="col-span-4 min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 p-6 flex items-center justify-center">
+    <div class="bg-gray-800 bg-opacity-80 backdrop-blur-md p-8 rounded-xl shadow-2xl w-full max-w-lg border border-cyan-500/50 transform transition-transform duration-300">
+        <h1 class="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-cyan-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-pulse">Programmer un cours</h1>
 
         <!-- Message de succès (optionnel) -->
         @if (session('success'))
@@ -38,6 +38,7 @@
                     <option value="Mercredi" class="bg-gray-800">Mercredi</option>
                     <option value="Jeudi" class="bg-gray-800">Jeudi</option>
                     <option value="Vendredi" class="bg-gray-800">Vendredi</option>
+                    <option value="Samedi" class="bg-gray-800">Samedi</option> <!-- Ajout de Samedi -->
                 </select>
                 @error('jour')
                     <div class="text-pink-500 mt-1">{{ $message }}</div>
@@ -45,17 +46,13 @@
             </div>
 
             <div class="mb-6">
-                <label for="start_time" class="block text-cyan-300 font-semibold mb-2">Heure de début</label>
-                <input type="time" name="heure_debut" id="start_time" class="w-full p-3 bg-gray-700 border border-cyan-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-200" required>
-                @error('heure_debut')
-                    <div class="text-pink-500 mt-1">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="mb-6">
-                <label for="end_time" class="block text-cyan-300 font-semibold mb-2">Heure de fin</label>
-                <input type="time" name="heure_fin" id="end_time" class="w-full p-3 bg-gray-700 border border-cyan-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-200" required>
-                @error('heure_fin')
+                <label for="creneau" class="block text-cyan-300 font-semibold mb-2">Créneau</label>
+                <select name="creneau" id="creneau" class="w-full p-3 bg-gray-700 border border-cyan-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-200" required>
+                    <option value="" class="bg-gray-800">Sélectionnez un créneau</option>
+                    <option value="Matin" class="bg-gray-800">Matin (8h-12h)</option>
+                    <option value="Après-midi" class="bg-gray-800">Après-midi (13h-17h)</option>
+                </select>
+                @error('creneau')
                     <div class="text-pink-500 mt-1">{{ $message }}</div>
                 @enderror
             </div>

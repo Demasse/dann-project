@@ -8,39 +8,50 @@ use Illuminate\Http\Request;
 
 class ProgController extends Controller
 {
+    public function index()
+    {
+        $progs = Prog::all();
+        $schedule = [];
+        $days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+        $creneaux = ['Matin', 'Après-midi'];
 
-    // public function index(){
+        foreach ($days as $day) {
+            foreach ($creneaux as $creneau) {
+                $schedule[$day][$creneau] = [];
+            }
+        }
 
-    //     $progs = Prog::all();
-    //     return view("prog.index",compact('progs'));
+        foreach ($progs as $prog) {
+            $schedule[$prog->jour][$prog->creneau][] = $prog;
+        }
 
-    // }
+       // dd('Méthode index() appelée', $days, $creneaux);
+        // Ajoute ceci pour tester
+
+        return view("prog.index", compact('schedule', 'days', 'creneaux'));
+    }
+
 
     public function create()
     {
-        //  $progs = Prog::all();
         $cours = Cour::all();
-        return view('prog.create', compact('cours',));
+        return view('prog.create', compact('cours'));
     }
 
     public function store(Request $request)
     {
         // Validation des données du formulaire
         $validatedData = $request->validate([
-            'cour_id' => 'required|exists:cours,id', // Assurez-vous que 'cours' est le nom de votre table
-            'jour' => 'required|string',
-            'heure_debut' => 'required|date_format:H:i',
-            'heure_fin' => 'required|date_format:H:i|after:start_time',
+            'cour_id' => 'required|exists:cours,id',
+            'jour' => 'required|in:Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi',
+            'creneau' => 'required|in:Matin,Après-midi',
             'nom' => 'required|string|max:255',
-
         ]);
 
         // Création d'un nouveau programme
         Prog::create($validatedData);
-        // die;
 
         // Redirection vers la liste des programmes avec un message de succès
         return redirect()->route('prog.index')->with('success', 'Le cours a été programmé avec succès.');
     }
-
 }

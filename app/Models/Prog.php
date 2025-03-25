@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Cour;
+
 class Prog extends Model
 {
     use HasFactory;
@@ -13,19 +14,17 @@ class Prog extends Model
     protected $fillable = [
         'cour_id',
         'jour',
-        'heure_debut',
-        'heure_fin',
+        'creneau', // Remplacer heure_debut et heure_fin par creneau
         'nom'
     ];
 
-    protected $with=[
+    protected $with = [
         'cour'
     ];
 
-    // Définir la relation avec le modèle Course
+    // Définir la relation avec le modèle Cour
     public function cour()
     {
-        return $this->belongsTo(Cour::class); // Assurez-vous que 'Cour' est le bon modèle
+        return $this->belongsTo(Cour::class);
     }
-
 }
