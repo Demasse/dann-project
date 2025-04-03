@@ -5,7 +5,7 @@
 @section('content')
 <div class="col-span-4 min-h-screen bg-gradient-to-br from-gray-100 via-blue-50 to-green-50 p-6 flex items-center justify-center">
     <div class="w-full max-w-lg">
-        <h1 class="text-3xl font-extrabold text-center mb-8 bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 bg-clip-text text-transparent transform hover:scale-105 transition-all duration-300">Créer un module</h1>
+        <h1 class="text-6xl font-extrabold text-center mb-8 bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 bg-clip-text text-transparent transform hover:scale-105 transition-all duration-300">Créer un module</h1>
 
         <!-- Message de succès ou erreur (optionnel) -->
         @if (session('success'))

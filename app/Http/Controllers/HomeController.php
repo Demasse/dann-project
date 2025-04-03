@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Competence;
 use App\Models\Cour;
 use App\Models\Module;
 use App\Models\Prog;
@@ -58,11 +59,12 @@ class HomeController extends Controller
     public function acceuil(){
         $countcour = Cour::count();
         $countmodule = Module::count();
+        $countcompetence = Competence::count();
         $countuser = User::count();
         $profcount = User::where('role','enseignant')->count();
         $etudiantcount = User::where('role','etudiant')->count();
 
-        return view('begin.acceuil', compact("countcour", "countmodule", "countuser","profcount","etudiantcount" ));
+        return view('begin.acceuil', compact("countcour", "countmodule", "countcompetence" ,"countuser","profcount","etudiantcount" ));
 
     }
 

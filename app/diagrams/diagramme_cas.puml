@@ -1,0 +1,56 @@
+@startuml
+' Orientation portrait
+left to right direction
+
+' Augmenter la taille des polices au maximum
+skinparam defaultFontSize 40
+skinparam actorFontSize 42
+skinparam componentFontSize 40
+skinparam packageFontSize 40
+
+' Augmenter la largeur de la page au maximum
+skinparam maxWidth 5000
+
+' Acteurs
+actor Apprenant
+actor Formateur
+actor Administrateur
+
+package "Time_app" {
+  ' Cas d’utilisation communs
+  [Se connecter à l’application] #..# Apprenant
+  [Se connecter à l’application] #..# Formateur
+  [Se connecter à l’application] #..# Administrateur
+
+  ' Cas d’utilisation des Apprenants
+  [Consulter son emploi du temps] #..# Apprenant
+  [Suivre les modifications ou annulations de cours] #..# Apprenant
+  [Voir la liste de ses cours] #..# Apprenant
+
+  ' Cas d’utilisation des Formateurs
+  [Saisir ou modifier ses disponibilités et sessions] #..# Formateur
+  [Créer les cours] #..# Formateur
+  [Créer les modules] #..# Formateur
+  [Programmer les cours] #..# Formateur
+  [Créer les créneaux horaires] #..# Formateur
+  [Consulter son emploi du temps] #..# Formateur
+  [Visualiser les apprenants] #..# Formateur
+
+  ' Cas d’utilisation des Administrateurs
+  [Créer ou modifier des profils d’utilisateurs] #..# Administrateur
+  [Gérer les cours] #..# Administrateur
+  [Gérer les modules] #..# Administrateur
+  [Programmer les cours] #..# Administrateur
+  [Gérer les créneaux horaires] #..# Administrateur
+  [Visualiser la liste de cours] #..# Administrateur
+  [Visualiser les apprenants] #..# Administrateur
+  [Visualiser les formateurs] #..# Administrateur
+  [Visualiser tous les utilisateurs] #..# Administrateur
+
+  [Générer des emplois du temps] #..# Administrateur
+}
+
+' Relations d’extension ou d’inclusion (optionnel)
+[Consulter son emploi du temps] .> [Suivre les modifications ou annulations de cours] : <<extend>>
+
+@enduml

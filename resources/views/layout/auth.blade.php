@@ -13,32 +13,32 @@
 <body class="antialiased h-full">
     <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div class="flex justify-center">
-            <a href="{{ route('index') }}" >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 h-12 w-12 hover:text-blue-500">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
-                  </svg>
-
-
+            <a href="{{ route('index') }}">
+                @if ($title === 'Connexion')
+                    <h1 class="text-4xl md:text-7xl font-extrabold text-center mb-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:scale-105 transition-all duration-300">
+                        Connexion
+                    </h1>
+                @elseif ($title === 'Inscription')
+                    <h1 class="text-4xl md:text-7xl font-extrabold text-center mb-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500  bg-clip-text text-transparent hover:scale-105 transition-all duration-300">
+                        Inscription du etudiant 
+                    </h1>
+                @endif
             </a>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
             <div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-                <form class="space-y-6" action=" {{ $action }} " method="POST" novalidate>
-
-
+                <form class="space-y-6" action="{{ $action }}" method="POST" novalidate>
                     @csrf
 
                     <div class="space-y-6">
-
-                        {{  $slot  }}
+                        {{ $slot }}
                     </div>
 
-
-
                     <div>
-                        <button type="submit" class="flex w-full justify-center
-                        rounded-md bg-green-950 px-3 py-1.5 text-sm font-semibold leading-6 hover:text-green-950 text-green-300 shadow-sm hover:bg-blue-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-950"> {{  $submitMessage }}</button>
+                        <button type="submit" class="flex w-full justify-center rounded-md bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                            {{ $submitMessage }}
+                        </button>
                     </div>
                 </form>
             </div>

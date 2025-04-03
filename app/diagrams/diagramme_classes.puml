@@ -1,0 +1,45 @@
+@startuml dd
+class Competence {
+  +titre
+  +module_id
+}
+class Module {
+  +nom_module
+  +cour_id
+}
+class Cour {
+  +nom
+  +description
+  +jour_id
+  +module_id
+}
+class Jour {
+  +nom
+}
+class Heure {
+  +jour
+  +heure_debut
+  +heure_fin
+}
+class Prog {
+  +cour_id
+  +jour
+  +creneau
+  +nom
+}
+class User {
+  +name
+  +email
+  +role
+  +password
+  +photo_profile
+}
+
+' Relations
+Competence "1" -- "1" Module : module_id
+Cour "1" o--> "*" Module : cour_id
+Jour "1" o--> "*" Cour : jour_id
+Cour "*" -- "*" Heure : cour_heure
+Cour "1" o--> "*" Prog : cour_id
+
+@enduml

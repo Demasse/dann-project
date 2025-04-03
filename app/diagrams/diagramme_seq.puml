@@ -1,0 +1,52 @@
+@startuml
+actor Apprenant
+actor Formateur
+actor Administrateur
+participant "Système" as System
+
+== Scénario : Apprenant se connecte et consulte son emploi du temps ==
+
+Apprenant -> System : Se connecter(username, password)
+activate System
+System -> Apprenant : Authentification réussie
+deactivate System
+
+Apprenant -> System : Consulter son emploi du temps
+activate System
+System -> Apprenant : Afficher emploi du temps
+deactivate System
+
+== Scénario : Formateur se connecte et gère ses cours ==
+
+Formateur -> System : Se connecter(username, password)
+activate System
+System -> Formateur : Authentification réussie
+deactivate System
+
+Formateur -> System : Créer un cours
+activate System
+System -> Formateur : Confirmation de création
+deactivate System
+
+Formateur -> System : Consulter son emploi du temps
+activate System
+System -> Formateur : Afficher emploi du temps
+deactivate System
+
+== Scénario : Administrateur gère les utilisateurs ==
+
+Administrateur -> System : Se connecter(username, password)
+activate System
+System -> Administrateur : Authentification réussie
+deactivate System
+
+Administrateur -> System : Créer un profil utilisateur
+activate System
+System -> Administrateur : Confirmation de création
+deactivate System
+
+Administrateur -> System : Visualiser les apprenants
+activate System
+System -> Administrateur : Afficher la liste des apprenants
+deactivate System
+@enduml

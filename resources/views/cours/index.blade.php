@@ -5,7 +5,7 @@
 @section('content')
 <div class="col-span-4 min-h-screen bg-white p-6 flex justify-center overflow-scroll ">
     <div class="w-full max-w-6xl">
-        <h1 class="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-blue-500 via-green-500 to-teal-500 bg-clip-text text-transparent transform hover:scale-105 transition-all duration-300 shadow-lg">Liste des cours</h1>
+        <h1 class="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-blue-500 via-green-500 to-teal-500 bg-clip-text text-transparent transform hover:scale-105 transition-all duration-300 shadow-lg">Liste des matiere</h1>
 
         <!-- Messages flash -->
         @if (session('success'))
@@ -35,8 +35,8 @@
                             <tr class="border-b border-gray-200 hover:bg-gray-100 transition-all duration-200 cursor-pointer" onclick="toggleHighlight(this)">
                                 <td class="py-4 px-6 text-gray-800 font-medium">{{ $cour->nom }}</td>
                                 <td class="py-4 px-6 text-gray-800">{{ $cour->description }}</td>
-                                <td class="py-4 px-6 ">
-                                    <select name="module" onchange="updateCompetence(this, 'competence-{{ $cour->id }}')" class="  border w-full border-gray-300 text-gray-800 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200">
+                                <td class="py-4 px-6  ">
+                                    <select name="module" onchange="updateCompetence(this, 'competence-{{ $cour->id }}')" class="   border w-[9rem] border-gray-300 text-gray-800 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200">
                                         @foreach ($cour->modules as $module)
                                             <option value="{{ $module->id }}" data-competence="{{ $module->competence?->titre }}" {{ $loop->first ? 'selected' : '' }}>
                                                 {{ $module->nom_module }}

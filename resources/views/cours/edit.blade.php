@@ -74,6 +74,7 @@
     <br>
 
     <a href="http://127.0.0.1:8000/cours" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  mb-8 px-4 rounded">Retour</a>
+    <a href="http://127.0.0.1:8000/cours" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  mb-8 px-4 rounded ">Retour</a>
 </form>
 
 

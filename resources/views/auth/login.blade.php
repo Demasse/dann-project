@@ -1,4 +1,4 @@
-<x-auth-layout title="connexion" :action="route('login')" submitmessage="connexion">
+<x-auth-layout title="Connexion" :action="route('login')" submitmessage="connexion">
 
 
 
@@ -10,7 +10,7 @@
         <div class="flex items-center">
             <input id="remember" name="remember" type="checkbox"
                 class="form-checkbox
-                     h-4 w-4 rounded border-gray-300 text-green-950 focus:ring-green-950">
+                     h-4 w-4 rounded border-blue-300 text-green-950 focus:ring-green-950">
             <label for="remember" class="ml-3 block text-sm leading-6">Reste connecté
             </label>
         </div>
