@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-
-const defaultTheme = require('tailwindcss/defaultTheme');
+import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
 
 export default {
     content: [
-      "./resources/**/*.blade.php",
-      "./resources/**/*.js",
-      "./resources/**/*.vue",
-      "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
     ],
     theme: {
         extend: {
@@ -17,14 +17,8 @@ export default {
         },
     },
     plugins: [
-
-        // require('@tailwindcss/forms'),
-        require('@tailwindcss/forms'),({
-
-            strategy:'class',
-
-        })
-
+        forms({
+            strategy: 'class',
+        }),
     ],
-  }
-
+};
