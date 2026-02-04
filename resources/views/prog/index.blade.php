@@ -21,8 +21,7 @@
                 Emploi de temps de la semaine du {{ \Carbon\Carbon::now()->startOfWeek()->format('d/m/Y') }} au {{ \Carbon\Carbon::now()->endOfWeek()->format('d/m/Y') }}
             </p>
 
-<<<<<<< HEAD
-=======
+            
             {{-- <div class="text-lg font-semibold text-gray-700 bg-blue-100 p-4 rounded-lg shadow-md"> --}}
                 <div class="flex justify-between items-center bg-gray-800 bg-opacity-70 p-4 rounded-lg shadow-md">
                     <div>
@@ -46,7 +45,9 @@
                         }}
                     </div>
                 </div>
->>>>>>> 31b5682 (first commit)
+
+
+
             <div class="rounded-xl shadow-2xl overflow-hidden border border-blue-500/50 transition-all duration-300 hover:shadow-xl">
                 <table class="min-w-full">
                     <thead>
