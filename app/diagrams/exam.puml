@@ -1,0 +1,50 @@
+@startuml
+class Client {
+    +ClientID : int
+    +Nom : String
+    +Prénom : String
+    +Email : String
+    +Téléphone : String
+}
+
+class Vendeur {
+    +VendeurID : int
+    +Nom : String
+    +Prénom : String
+    +Email : String
+}
+
+class Produit {
+    +ProduitID : int
+    +Nom : String
+    +Description : String
+    +Prix : float
+    +QuantitéDisponible : int
+}
+
+class Facture {
+    +FactureID : int
+    +Date : Date
+    +MontantTotal : float
+    +Statut : String
+}
+
+class DétailFacture {
+    +DetailID : int
+    +Quantité : int
+    +PrixUnitaire : float
+}
+
+class Entrepôt {
+    +EntrepôtID : int
+    +Nom : String
+    +Adresse : String
+}
+
+Client "1" -- "0..*" Facture : émet
+Vendeur "1" -- "0..*" Facture : émet
+Facture "1" -- "0..*" DétailFacture : contient
+DétailFacture "0..*" -- "1" Produit : référence
+Entrepôt "1" -- "0..*" Produit : stocke
+
+@enduml

@@ -36,7 +36,11 @@
                                 <td class="py-4 px-6 text-gray-800 font-medium">{{ $cour->nom }}</td>
                                 <td class="py-4 px-6 text-gray-800">{{ $cour->description }}</td>
                                 <td class="py-4 px-6  ">
+
                                     <select name="module" onchange="updateCompetence(this, 'competence-{{ $cour->id }}')" class="   border w-[9rem] border-gray-300 text-gray-800 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200">
+
+                                    <select name="module" onchange="updateCompetence(this, 'competence-{{ $cour->id }}')" class="   border w-[10rem] border-gray-300 text-gray-800 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200">
+
                                         @foreach ($cour->modules as $module)
                                             <option value="{{ $module->id }}" data-competence="{{ $module->competence?->titre }}" {{ $loop->first ? 'selected' : '' }}>
                                                 {{ $module->nom_module }}

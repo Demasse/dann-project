@@ -3,7 +3,10 @@
 @section('title', 'Emploi du temps')
 
 @section('content')
-<div class="col-span-4 min-h-screen text-black bg-gradient-to-br p-6 flex justify-center ">
+
+
+<div class="col-span-4 min-h-screen text-black bg-gradient-to-br p-6 flex justify-center overflow-scroll ">
+
     <div class="w-full max-w-6xl">
         <h1 class="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-blue-400 via-green-400 to-teal-400 bg-clip-text text-transparent transform hover:scale-105 transition-all duration-300 shadow-lg">
             Emploi du temps
@@ -18,6 +21,32 @@
                 Emploi de temps de la semaine du {{ \Carbon\Carbon::now()->startOfWeek()->format('d/m/Y') }} au {{ \Carbon\Carbon::now()->endOfWeek()->format('d/m/Y') }}
             </p>
 
+<<<<<<< HEAD
+=======
+            {{-- <div class="text-lg font-semibold text-gray-700 bg-blue-100 p-4 rounded-lg shadow-md"> --}}
+                <div class="flex justify-between items-center bg-gray-800 bg-opacity-70 p-4 rounded-lg shadow-md">
+                    <div>
+                        <label for="filiere" class="block text-gray-200 text-lg font-semibold mb-2">Filière :</label>
+                        <select id="filiere" name="filiere" class="block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500">
+                            <option value=""> Développement d'application web  </option>
+                            <option value="secretariat_bureautique">Secrétariat bureautique</option>
+                            <option value="comptabilite_informatisée">Comptabilité informatisée et de gestion</option>
+                            <option value="maintenance_systemes_informatiques">Maintenance des systèmes informatiques</option>
+                            <option value="developpement_application">Développement d'application web </option>
+                            <option value="graphisme_production">Graphisme de production</option>
+                            <option value="secretariat_direction">Secrétariat de direction</option>
+                            <option value="maintenance_reseaux_informatiques">Maintenance des réseaux informatiques</option>
+                        </select>
+                    </div>
+                    <div class=" font-semibold text-gray-200 p-4 text-2xl">
+                        Année scolaire {{
+                            (\Carbon\Carbon::now()->month >= 9 ? \Carbon\Carbon::now()->year : \Carbon\Carbon::now()->year - 1)
+                        }}-{{
+                            (\Carbon\Carbon::now()->month >= 9 ? \Carbon\Carbon::now()->year + 1 : \Carbon\Carbon::now()->year)
+                        }}
+                    </div>
+                </div>
+>>>>>>> 31b5682 (first commit)
             <div class="rounded-xl shadow-2xl overflow-hidden border border-blue-500/50 transition-all duration-300 hover:shadow-xl">
                 <table class="min-w-full">
                     <thead>

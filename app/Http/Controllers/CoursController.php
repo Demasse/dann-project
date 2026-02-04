@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Competence;
 use App\Models\Cour;
 use App\Models\module;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CoursController extends Controller
@@ -40,7 +41,9 @@ class CoursController extends Controller
     public function create()
     {
         $modules=module::all(); //recupere les module assoisie au cours
-        return view('cours.create',compact('modules'));
+        $profcount = User::where('role','enseignant')->get();
+
+        return view('cours.create',compact( 'modules', 'profcount' ));
 
     }
 

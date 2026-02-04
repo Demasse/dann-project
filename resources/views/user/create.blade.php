@@ -3,7 +3,9 @@
 @section('content')
 <div class="col-span-4 flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 p-6">
     <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md transform transition-transform duration-300 border border-indigo-200">
-        <h2 class="text-3xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Créer un enseignant </h2>
+
+        <h2 class="text-3xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Créer un Formateur </h2>
+
 
         <!-- Affichage des erreurs avec style -->
         @if ($errors->any())
