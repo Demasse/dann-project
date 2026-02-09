@@ -31,7 +31,7 @@
                             <td class="py-4 px-6 text-indigo-900">{{ $etudiantcount->email }}</td>
                             <td class="py-4 px-6 text-indigo-900">{{ $etudiantcount->role }}</td>
                             <td class="py-4 px-6 flex space-x-2">
-                                @if (Auth::user()->role === 'admin')
+                                @if (Auth::user()->role === 'admin' )
                                     <a href="{{ route('user.show', $etudiantcount) }}" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
                                         Voir
                                     </a>
