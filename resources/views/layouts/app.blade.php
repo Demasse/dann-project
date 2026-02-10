@@ -18,7 +18,7 @@
                     <a class="text-white hover:text-red-200 font-bold text-lg" href="{{ route('cours.index') }}">Accueil</a>
                 </li>
 
-            
+
 
                 <li>
                     <a class="text-white hover:text-red-200 font-bold text-lg" href="{{ route('cours.create') }} ">Créer un cours</a>
@@ -32,7 +32,7 @@
         </nav>
     </header>
 
-    <div class="col-span-4"></div>
+    <div class="col-span-4 " ></div>
 
 
     {{-- <div class="container mx-auto mt-8">
