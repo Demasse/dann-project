@@ -3,119 +3,128 @@
 @section('title', 'Liste des cours')
 
 @section('content')
-    <div class="col-span-4 min-h-screen bg-white p-6 flex justify-center overflow-scroll ">
-        <div class="w-full max-w-6xl">
-            <h1
-                class="text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-blue-500 via-green-500 to-teal-500 bg-clip-text text-transparent transform hover:scale-105 transition-all duration-300 shadow-lg">
-                Liste des matiere</h1>
+<div class="col-span-4 min-h-screen bg-white p-4 md:p-6 overflow-auto">
+    <div class="w-full max-w-7xl mx-auto">
 
-            <!-- Messages flash -->
-            @if (session('success'))
-                <div
-                    class="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg shadow-md w-full max-w-2xl mx-auto animate-bounce">
-                    {{ session('success') }}
-                </div>
-            @elseif (session('error'))
-                <div
-                    class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg shadow-md w-full max-w-2xl mx-auto">
-                    {{ session('error') }}
-                </div>
-            @endif
+        <h1 class="text-3xl md:text-4xl font-extrabold text-center mb-8
+            bg-gradient-to-r from-blue-500 via-green-500 to-teal-500
+            bg-clip-text text-transparent">
+            Liste des matières
+        </h1>
 
-            @if ($cours->count())
-                <div
-                    class="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200 transition-all duration-300 hover:shadow-xl">
-                    <table class="min-w-full">
-                        <thead>
-                            <tr class="bg-gradient-to-r from-blue-500 to-green-500 text-white">
-                                <th class="py-4 px-6 text-left text-lg font-semibold border-b border-blue-400/30">Matière
-                                </th>
-                                <th class="py-4 px-6 text-left text-lg font-semibold border-b border-blue-400/30">Description
-                                </th>
-                                <th class="py-4 px-6 text-left text-lg font-semibold border-b border-blue-400/30">Module
-                                </th>
-                                <th class="py-4 px-6 text-left text-lg font-semibold border-b border-blue-400/30">Compétence
-                                </th>
-                                <th class="py-4 px-6 text-left text-lg font-semibold border-b border-blue-400/30">Action
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($cours as $cour)
-                                <tr class="border-b border-gray-200 hover:bg-gray-100 transition-all duration-200 cursor-pointer"
-                                    onclick="toggleHighlight(this)">
-                                    <td class="py-4 px-6 text-gray-800 font-medium">{{ $cour->nom }}</td>
-                                    <td class="py-4 px-6 text-gray-800">{{ $cour->description }}</td>
+        {{-- Messages flash --}}
+        @if (session('success'))
+            <div class="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg shadow-md max-w-2xl mx-auto">
+                {{ session('success') }}
+            </div>
+        @elseif (session('error'))
+            <div class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg shadow-md max-w-2xl mx-auto">
+                {{ session('error') }}
+            </div>
+        @endif
 
-                          <td class="py-4 px-6 text-gray-800">
-    <select name="module"
-        onchange="updateCompetence(this, 'competence-{{ $cour->id }}')"
-        class="border border-gray-300 text-gray-800 p-2 pr-10 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-        @foreach ($cour->modules as $module)
-            <option value="{{ $module->id }}"
-                data-competence="{{ $module->competence?->titre }}"
-                {{ $loop->first ? 'selected' : '' }}>
-                {{ $module->nom_module }}
-            </option>
-        @endforeach
-    </select>
-</td>
+        @if ($cours->count())
+        {{-- Scroll horizontal pour mobile --}}
+        <div class="overflow-x-auto">
+            <div class="bg-white rounded-xl shadow-xl border border-gray-200 min-w-[900px]">
+                <table class="w-full border-collapse">
 
+                    {{-- HEADER --}}
+                    <thead>
+                        <tr class="bg-gradient-to-r from-blue-500 to-green-500 text-white text-left">
+                            <th class="px-6 py-4 text-lg font-semibold">Matière</th>
+                            <th class="px-6 py-4 text-lg font-semibold">Description</th>
+                            <th class="px-6 py-4 text-lg font-semibold text-center">Module</th>
+                            <th class="px-6 py-4 text-lg font-semibold text-center">Compétence</th>
+                            <th class="px-6 py-4 text-lg font-semibold text-center">Action</th>
+                        </tr>
+                    </thead>
 
-                                    <td id="competence-{{ $cour->id }}" class="py-4 px-6 text-gray-800 text-center">
-                                        @if ($cour->modules->isNotEmpty())
-                                            {{ $cour->modules->first()->competence?->titre }}
-                                        @endif
-                                    </td>
+                    {{-- BODY --}}
+                    <tbody>
+                        @foreach ($cours as $cour)
+                        <tr class="border-b border-gray-200 hover:bg-gray-50 transition">
 
-                                    <td class="py-4 px-6 flex justify-center items-center space-x-2">
-                                        @if (Auth::user()->role === 'admin')
-                                            <a href="{{ route('cours.show', $cour->id) }}"
-                                                class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-all duration-300 shadow-md w-20 text-center">
-                                                Voir
-                                            </a>
-                                            <a href="{{ route('cours.edit', $cour->id) }}"
-                                                class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md w-20 text-center">
-                                                Modifier
-                                            </a>
-                                            <a href="{{ route('cours.delete', $cour->id) }}"
-                                                class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-all duration-300 shadow-md w-20 text-center">
-                                                Supprimer
-                                            </a>
-                                        @else
-                                            <a href="{{ route('cours.show', $cour->id) }}"
-                                                class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-all duration-300 shadow-md w-20 text-center">
-                                                Voir
-                                            </a>
-                                        @endif
-                                    </td>
+                            {{-- Matière --}}
+                            <td class="px-6 py-4 font-medium text-gray-800">
+                                {{ $cour->nom }}
+                            </td>
 
+                            {{-- Description --}}
+                            <td class="px-6 py-4 text-gray-700">
+                                {{ $cour->description }}
+                            </td>
 
+                            {{-- Module --}}
+                            <td class="px-6 py-4 text-center">
+                                <select
+                                    onchange="updateCompetence(this, 'competence-{{ $cour->id }}')"
+                                    class="w-44 mx-auto border border-gray-300 text-gray-800 p-2 rounded-lg
+                                           focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @else
-                <p class="text-center text-gray-600 font-medium mt-6">Aucun cours disponible.</p>
-            @endif
+                                    @foreach ($cour->modules as $module)
+                                        <option
+                                            value="{{ $module->id }}"
+                                            data-competence="{{ $module->competence?->titre }}"
+                                            {{ $loop->first ? 'selected' : '' }}>
+                                            {{ $module->nom_module }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </td>
+
+                            {{-- Compétence --}}
+                            <td id="competence-{{ $cour->id }}"
+                                class="px-6 py-4 text-center text-gray-800 font-medium">
+                                {{ $cour->modules->first()?->competence?->titre }}
+                            </td>
+
+                            {{-- Actions --}}
+                            <td class="px-6 py-4">
+                                <div class="flex justify-center items-center gap-2">
+
+                                    <a href="{{ route('cours.show', $cour->id) }}"
+                                       class="w-24 text-center bg-green-500 text-white py-2 rounded-lg
+                                              hover:bg-green-600 transition shadow">
+                                        Voir
+                                    </a>
+
+                                    @if (Auth::user()->role === 'admin')
+                                        <a href="{{ route('cours.edit', $cour->id) }}"
+                                           class="w-24 text-center bg-blue-500 text-white py-2 rounded-lg
+                                                  hover:bg-blue-600 transition shadow">
+                                            Modifier
+                                        </a>
+
+                                        <a href="{{ route('cours.delete', $cour->id) }}"
+                                           class="w-24 text-center bg-pink-500 text-white py-2 rounded-lg
+                                                  hover:bg-pink-600 transition shadow">
+                                            Supprimer
+                                        </a>
+                                    @endif
+
+                                </div>
+                            </td>
+
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
+        @else
+            <p class="text-center text-gray-600 mt-8">Aucun cours disponible.</p>
+        @endif
+
     </div>
+</div>
 
-    <script>
-        function updateCompetence(selectElement, competenceId) {
-            const competenceCell = document.getElementById(competenceId);
-            const selectedOption = selectElement.options[selectElement.selectedIndex];
-            competenceCell.textContent = selectedOption.dataset.competence || '';
-        }
-
-        function toggleHighlight(row) {
-            const rows = document.querySelectorAll('tbody tr');
-            rows.forEach(r => r.classList.remove('bg-green-100', 'bg-yellow-100', 'bg-pink-100', 'bg-blue-100'));
-            const colors = ['bg-green-100', 'bg-yellow-100', 'bg-pink-100', 'bg-blue-100'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            row.classList.add(randomColor);
-        }
-    </script>
+{{-- SCRIPT --}}
+<script>
+    function updateCompetence(selectElement, competenceId) {
+        const competenceCell = document.getElementById(competenceId);
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        competenceCell.textContent = selectedOption.dataset.competence || '';
+    }
+</script>
 @endsection
