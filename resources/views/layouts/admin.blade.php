@@ -62,10 +62,10 @@
                         ['route' => 'cours.index', 'label' => 'Liste des cours'],
                         ['route' => 'cours.create', 'label' => 'Créer un cours'],
                         ['route' => 'module.create', 'label' => 'Créer un module'],
-                        ['route' => 'prog.create', 'label' => 'Programmer un cours'],
                         ['route' => 'user.index', 'label' => 'Liste des utilisateurs'],
                         ['route' => 'user.prof', 'label' => 'Liste des professeurs'],
                         ['route' => 'user.etudiant', 'label' => 'Liste des étudiants'],
+                        ['route' => 'prog.create', 'label' => 'Programmer un cours'],
                         ['route' => 'prog.index', 'label' => 'Emploi de temps'],
                     ],
                     'enseignant' => [
