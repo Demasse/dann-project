@@ -4,6 +4,41 @@
 
 @section('content')
 
+<style>
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    .imprime, .imprime * {
+        visibility: visible;
+    }
+
+    .desktop-print {
+        display: block !important;
+    }
+
+    .mobile-print {
+        display: none !important;
+    }
+
+    .print-hidden {
+        display: none !important;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    table {
+        width: 100% !important;
+        border-collapse: collapse;
+    }
+}
+</style>
+
 <div class="col-span-4 min-h-screen text-black bg-gradient-to-br p-4 md:p-6 overflow-auto">
 
     <div class="w-full max-w-6xl mx-auto">
@@ -15,15 +50,16 @@
             Emploi du temps
         </h1>
 
-        {{-- INFOS SEMAINE --}}
         <div class="imprime">
+
+            {{-- INFOS SEMAINE --}}
             <p class="text-center mb-6 bg-gray-800 text-white rounded-lg py-3 shadow">
                 Semaine du {{ \Carbon\Carbon::now()->startOfWeek()->format('d/m/Y') }}
                 au {{ \Carbon\Carbon::now()->endOfWeek()->format('d/m/Y') }}
             </p>
 
             {{-- ===================== DESKTOP ===================== --}}
-            <div class="hidden md:block rounded-xl shadow-2xl overflow-hidden border">
+            <div class="hidden md:block desktop-print rounded-xl shadow-2xl overflow-hidden border">
 
                 <table class="min-w-full text-center border-collapse">
                     <thead class="bg-gray-900 text-white">
@@ -88,7 +124,7 @@
             </div>
 
             {{-- ===================== MOBILE ===================== --}}
-            <div class="md:hidden mt-6">
+            <div class="md:hidden mobile-print mt-6">
 
                 <label class="block font-semibold mb-2">Choisir le jour</label>
 
@@ -146,6 +182,7 @@
                     </div>
                 @endforeach
             </div>
+
         </div>
 
         {{-- BOUTON IMPRIMER --}}
@@ -160,19 +197,18 @@
     </div>
 </div>
 
-{{-- ===================== SCRIPT MOBILE ===================== --}}
 <script>
-    const select = document.getElementById('jourSelect');
-    const contents = document.querySelectorAll('.jour-content');
+const select = document.getElementById('jourSelect');
+const contents = document.querySelectorAll('.jour-content');
 
-    function updateDay() {
-        contents.forEach(c => {
-            c.classList.toggle('hidden', c.dataset.day !== select.value);
-        });
-    }
+function updateDay() {
+    contents.forEach(c => {
+        c.classList.toggle('hidden', c.dataset.day !== select.value);
+    });
+}
 
-    select.addEventListener('change', updateDay);
-    updateDay();
+select.addEventListener('change', updateDay);
+updateDay();
 </script>
 
 @endsection
