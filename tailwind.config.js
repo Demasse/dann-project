@@ -3,6 +3,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 export default {
+    darkMode: 'class', // <--- On ajoute ça pour activer le basculement par classe CSS
     content: [
       "./resources/**/*.blade.php",
       "./resources/**/*.js",
