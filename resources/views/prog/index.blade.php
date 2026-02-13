@@ -55,9 +55,10 @@
                                 <td class="py-4 px-4 border-r dark:border-gray-700">
                                     @if(isset($schedule[$day]['Matin']))
                                         @foreach ($schedule[$day]['Matin'] as $prog)
-                                            <div class="mb-2 p-2 rounded bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-500 text-left">
-                                                <p class="font-bold text-blue-800 dark:text-blue-300">{{ $prog->cour['nom'] }}</p>
-                                                <p class="text-xs text-gray-600 dark:text-gray-400">{{ $prog->nom }}</p>
+                                            {{-- ICI : On a retiré le fond et les bordures pour un style épuré --}}
+                                            <div class="mb-2">
+                                                <p class="font-bold text-indigo-700 dark:text-blue-400 uppercase text-sm tracking-tight">{{ $prog->cour['nom'] }}</p>
+                                                <p class="text-xs font-medium text-gray-500 dark:text-gray-400">{{ $prog->nom }}</p>
                                             </div>
                                         @endforeach
                                     @else
@@ -82,9 +83,10 @@
                                 <td class="py-4 px-4 border-r dark:border-gray-700">
                                     @if(isset($schedule[$day]['Après-midi']))
                                         @foreach ($schedule[$day]['Après-midi'] as $prog)
-                                            <div class="mb-2 p-2 rounded bg-green-50 dark:bg-green-900/30 border-l-4 border-green-500 text-left">
-                                                <p class="font-bold text-green-800 dark:text-green-300">{{ $prog->cour['nom'] }}</p>
-                                                <p class="text-xs text-gray-600 dark:text-gray-400">{{ $prog->nom }}</p>
+                                            {{-- ICI AUSSI : Style minimaliste sans couleur de fond --}}
+                                            <div class="mb-2">
+                                                <p class="font-bold text-teal-700 dark:text-teal-400 uppercase text-sm tracking-tight">{{ $prog->cour['nom'] }}</p>
+                                                <p class="text-xs font-medium text-gray-500 dark:text-gray-400">{{ $prog->nom }}</p>
                                             </div>
                                         @endforeach
                                     @else
@@ -99,7 +101,7 @@
 
             {{-- ===================== MOBILE ===================== --}}
             <div class="md:hidden mobile-print mt-6">
-                <select id="jourSelect" class="w-full mb-6 p-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white shadow-sm">
+                <select id="jourSelect" class="w-full mb-6 p-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white shadow-sm font-bold transition-all">
                     @foreach ($days as $day)
                         <option value="{{ $day }}">{{ $day }}</option>
                     @endforeach
@@ -109,31 +111,31 @@
                     <div class="jour-content hidden" data-day="{{ $day }}">
                         {{-- MATIN --}}
                         <div class="bg-white dark:bg-gray-800 rounded-xl p-4 mb-4 shadow border border-gray-100 dark:border-gray-700">
-                            <h3 class="font-bold text-blue-600 dark:text-blue-400 mb-3">🌅 Matin (8h - 12h)</h3>
+                            <h3 class="font-bold text-blue-600 dark:text-blue-400 mb-3 uppercase text-xs tracking-widest">🌅 Matin (8h - 12h)</h3>
                             @if(isset($schedule[$day]['Matin']))
                                 @foreach ($schedule[$day]['Matin'] as $prog)
-                                    <div class="bg-blue-50 dark:bg-gray-900/50 rounded-lg p-3 mb-2 border-l-4 border-blue-500">
+                                    <div class="bg-blue-50/50 dark:bg-gray-900/50 rounded-lg p-3 mb-2 border-l-4 border-blue-500">
                                         <p class="font-bold text-gray-900 dark:text-white">{{ $prog->cour['nom'] }}</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">{{ $prog->nom }}</p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">{{ $prog->nom }}</p>
                                     </div>
                                 @endforeach
                             @else
-                                <p class="italic text-gray-400 dark:text-gray-600">Aucun cours</p>
+                                <p class="italic text-gray-400 dark:text-gray-600 text-sm">Aucun cours</p>
                             @endif
                         </div>
 
                         {{-- APRES-MIDI --}}
                         <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-100 dark:border-gray-700">
-                            <h3 class="font-bold text-green-600 dark:text-green-400 mb-3">🌇 Après-midi (13h - 17h)</h3>
+                            <h3 class="font-bold text-green-600 dark:text-green-400 mb-3 uppercase text-xs tracking-widest">🌇 Après-midi (13h - 17h)</h3>
                             @if(isset($schedule[$day]['Après-midi']))
                                 @foreach ($schedule[$day]['Après-midi'] as $prog)
-                                    <div class="bg-green-50 dark:bg-gray-900/50 rounded-lg p-3 mb-2 border-l-4 border-green-500">
+                                    <div class="bg-green-50/50 dark:bg-gray-900/50 rounded-lg p-3 mb-2 border-l-4 border-green-500">
                                         <p class="font-bold text-gray-900 dark:text-white">{{ $prog->cour['nom'] }}</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">{{ $prog->nom }}</p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">{{ $prog->nom }}</p>
                                     </div>
                                 @endforeach
                             @else
-                                <p class="italic text-gray-400 dark:text-gray-600">Aucun cours</p>
+                                <p class="italic text-gray-400 dark:text-gray-600 text-sm">Aucun cours</p>
                             @endif
                         </div>
                     </div>
@@ -143,7 +145,7 @@
 
         {{-- BOUTON IMPRIMER --}}
         <div class="mt-8 flex justify-center print-hidden">
-            <button onclick="window.print()" class="bg-indigo-600 dark:bg-indigo-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 dark:hover:bg-indigo-400 transition-all">
+            <button onclick="window.print()" class="bg-indigo-600 dark:bg-indigo-500 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-indigo-700 dark:hover:bg-indigo-400 hover:shadow-xl transition-all active:scale-95">
                 Imprimer le programme
             </button>
         </div>
