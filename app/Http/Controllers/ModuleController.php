@@ -16,7 +16,7 @@ class ModuleController extends Controller
     public function create()
     {
         $cours=Cour::all();
-        $modules=module::all(); //recupere les module assoisie au cours
+        $modules=Module::all(); //recupere les module assoisie au cours
         return view('module.create',compact('modules', 'cours' ));
 
     }
@@ -27,30 +27,28 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation des données du formulaire
+        // Validation des données
         $validated = $request->validate([
-            'nom' => 'required|string|max:255', // Le nom du module
-            'competence' => 'required|string|max:255', // La compétence associée
-            'cour_id' => 'required|exists:cours,id', // Le cours sélectionné
+            'nom' => 'required|string|max:255',
+            'competence' => 'required|string|max:255',
+            'cour_id' => 'required|exists:cours,id',
         ]);
 
-        $cour_id = Cour::where('id', $validated['cour_id'])->first()->id;
+        // MODIFICATION 2 : Utilisation directe de l'ID validé (plus rapide)
         // Recherche ou création du module
         $module = Module::firstOrCreate([
             'nom_module' => $validated['nom'],
-            'cour_id' => $cour_id,
+            'cour_id' => $validated['cour_id'],
         ]);
-        $module_id = Module::orderBy('id', 'desc')->first()->id;
-        // Recherche ou création de la compétence
+
+        // MODIFICATION 3 : Utilisation de l'ID de l'objet $module fraîchement créé
+        // C'est beaucoup plus sûr que de faire un "orderBy desc" qui peut renvoyer le module d'un autre utilisateur
         $competence = Competence::firstOrCreate([
             'titre' => $validated['competence'],
-            'module_id' => $module_id
+            'module_id' => $module->id
         ]);
-        // Mise à jour du cours sélectionné avec les nouvelles associations
 
-
-        // Redirection avec message de succès
-        return redirect()->route('cours.index')->with('success', 'Module creer avec succès !');
+        return redirect()->route('cours.index')->with('success', 'Module créé avec succès !');
     }
 
 
