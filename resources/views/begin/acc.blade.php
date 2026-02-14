@@ -17,7 +17,7 @@
         </div>
 
         <nav class="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6 items-center">
-            <button id="theme-toggle" class="p-3 rounded-full bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/20 transition-all border border-gray-300 dark:border-white/30 shadow-sm">
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/20 transition-all border border-gray-300 dark:border-white/30 shadow-sm">
                 <span id="theme-toggle-dark-icon" class="hidden text-xl">🌙</span>
                 <span id="theme-toggle-light-icon" class="hidden text-xl">☀️</span>
             </button>
@@ -40,6 +40,7 @@
         </h1>
 
         <div class="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-16 mt-6">
+
             <p
                 class="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-full md:max-w-xl bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-50 p-6 rounded-lg shadow-xl border border-gray-200 dark:border-white/10 transition-all duration-300">
                 Nous sommes heureux de vous accueillir dans cet espace conçu spécialement pour les étudiants et le
